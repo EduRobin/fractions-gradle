@@ -22,3 +22,4 @@ public class TestAddition {
         Assert.assertEquals((Integer) 1, result.getDenominator());
     }
 }
+    

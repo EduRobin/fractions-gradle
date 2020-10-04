@@ -12,6 +12,7 @@ public class Fraction implements IFraction {
 
     @Override
     public Integer getNumerator() {
+
         return numerator;
     }
 
@@ -22,26 +23,69 @@ public class Fraction implements IFraction {
 
     @Override
     public IFraction plus(IFraction other) {
-        throw new UnsupportedOperationException();
+
+        int citatel = 0;
+        int jmenovatel = 0;
+
+        if(getDenominator() == getDenominator()) {
+            citatel = getNumerator() + other.getNumerator();
+            jmenovatel = getDenominator();
+        } else {
+            jmenovatel = getDenominator() * other.getDenominator();
+            citatel = (jmenovatel / getDenominator() * getNumerator()) + jmenovatel / other.getDenominator() * other.getNumerator();
+        }
+        return createNormalised(citatel, jmenovatel);
     }
 
     @Override
     public IFraction minus(IFraction other) {
-        throw new UnsupportedOperationException();
+        int citatel = 0;
+        int jmenovatel = 0;
+
+        if(getDenominator() == getDenominator()) {
+            citatel = getNumerator() + other.getNumerator();
+            jmenovatel = getDenominator();
+        } else {
+            jmenovatel = getDenominator() * other.getDenominator();
+            citatel = (jmenovatel / getDenominator() * getNumerator()) - jmenovatel / other.getDenominator() * other.getNumerator();
+        }
+        return createNormalised(citatel, jmenovatel);
     }
 
     @Override
     public IFraction times(IFraction other) {
-        throw new UnsupportedOperationException();
+        int citatel = 0;
+        int jmenovatel = 0;
+
+        citatel = getNumerator() * other.getNumerator();
+        jmenovatel = getDenominator() * other.getDenominator();
+
+        return createNormalised(citatel, jmenovatel);
     }
 
     @Override
     public IFraction dividedBy(IFraction other) {
-        throw new UnsupportedOperationException();
+        int citatel = 0;
+        int jmenovatel = 0;
+
+        citatel = getNumerator() * other.getDenominator();
+        jmenovatel = getDenominator() * other.getNumerator();
+        
+        return createNormalised(citatel, jmenovatel);
     }
 
     public static Fraction createNormalised(Integer numerator, Integer denominator) {
-        throw new UnsupportedOperationException();
+        int citatel = 0;
+        int jmenovatel = 0;
+
+        for (int i = 1; i <= numerator && i <= denominator; i++) {
+            if(numerator % i == 0 && denominator % i == 0) {
+                kraceni = 1;
+            }
+            citatel = numerator / kraceni;
+            jmenovatel = denominator / kraceni;
+        }
+        return citatel, jmenovatel;
     }
 
     @Override
